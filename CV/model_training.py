@@ -102,19 +102,15 @@ class ContrastiveLoss(nn.Module):
 if __name__ == "__main__":
     # Loading all data from files
     train = np.load("pairs_train_data.npz", allow_pickle=True)
-    test = np.load("pairs_test_data.npz", allow_pickle=True)
     val = np.load("pairs_validation_data.npz", allow_pickle=True)
 
     train_pairs = train["pairs"]
     train_labels = train["labels"]
-    test_pairs = test["pairs"]
-    test_labels = test["labels"]
     val_pairs = val["pairs"]
     val_labels = val["labels"]
 
     train_dataset = SiameseArrayDataset(train_pairs, train_labels)
     val_dataset   = SiameseArrayDataset(val_pairs, val_labels)
-    test_dataset  = SiameseArrayDataset(test_pairs, test_labels)
 
     # We will be giving pairs of images by batches for training and for validation
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
