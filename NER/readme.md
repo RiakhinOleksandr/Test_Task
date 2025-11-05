@@ -110,9 +110,9 @@ After that we start to prepare our model. We setting number of labels and biject
 
 
 
-Then we setting training arguments. We set directory where output will be putted. 
+Then we setting training arguments. We set directory where output will be putted.
 
-We set learning rate as 3e-5. It is common practice to set small learning rate (1e-5 - 5e-5) for fine-tuning model, so model slightly adjusts the weights to adapt to finding mountains. We don't want to completely rewrite what the model already knows. 
+We set learning rate as 3e-5. It is common practice to set small learning rate (1e-5 - 5e-5) for fine-tuning model, so model slightly adjusts the weights to adapt to finding mountains. We don't want to completely rewrite what the model already knows.
 
 We set number of epochs to 3. 3 is good choice because it is not too big, so model is not overfitting, but also not too small, so it learns from our dataset.
 
@@ -170,7 +170,7 @@ Then it lists all libraries that are needed to run demo and command that will in
 
 
 
-Then after importing all necessary libraries. We are loading our model and tokenizer. 
+Then after importing all necessary libraries. We are loading our model and tokenizer.
 
 
 
@@ -199,8 +199,8 @@ If you want just to use this model you only need to download demo, mountain-ner-
 If you want to repeat process of creating that model, you need to follow instructions:
 
 1. First of all download all .py and .ipynb files.
-2. Assuming you already have Python 3.12 (On moment of writing this readme file, torch doesn't support using GPU for faster training and predictions on Python 3.13, so I needed to downgrade to Python 3.12) you need to download all libraries listed in requirements.txt. You can do by writing next command in console: pip install 'library\_name'
-3. To use GPU for faster training and predictions your GPU must support CUDA (If you have NVIDIA GPU you need to check version of CUDA it supports. Then you can import torch and by using torch.cuda.is\_available() function check. If it is False you might need to run next command (replace 121 with your version of CUDA if necessary): 'pip install torch==2.2.2+cu121 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121'). 
+2. Assuming you already have Python 3.12 (On moment of writing this readme file, torch doesn't support using GPU for faster training and predictions on Python 3.13, so I needed to downgrade to Python 3.12) you need to download all libraries listed in requirements.txt. You can do by writing next command in console: pip install 'library\_name'.
+3. To use GPU for faster training and predictions your GPU must support CUDA (If you have NVIDIA GPU you need to check version of CUDA it supports. Then you can import torch and by using torch.cuda.is\_available() function check. If it is False you might need to run next command (replace 121 with your version of CUDA if necessary): 'pip install torch==2.2.2+cu121 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121').
 4. If you have not NVIDIA GPU or torch.cuda.is\_available() says False no matter what you do, it is okay. It will run by CPU, it is much slower, but it must work. If torch.cuda.is\_available() says True, you can go to next step.
 5. Open dataset\_generation.ipynb and run all cells. At the end three jsonl files (train.jsonl, test.jsonl, validation.jsonl) must appear in your directory. In cell where number of rows is printed you must have something about 192500 (192348 in my case. It might change if something will change in Wikipedia).
 6. Next step is to open model\_training.py file and run it. If everything okay, you will see progress bar and see training results printed every 200 steps. For me training model took a little bit more than an hour. After training will end, you must see three new directories in yours (mountain-ner, mountain-ner-distilbert and mountain-ner-model). mountain-ner directory contains checkoints, others two diretories are more important, they contain model and tokenizer.
